@@ -1,0 +1,130 @@
+
+<html>
+  <head>
+    <title>Online Education Platform</title>
+  </head>
+  <body>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Profile</a>
+      <a href="#">Logout</a>
+    </nav>
+    <header>
+      <h1>Welcome to our Online Education Platform</h1>
+      <p>Learn new skills from top experts in your field</p>
+    </header>
+    <main>
+      <h2>Featured Courses</h2>
+      <ul class="course-list">
+        <li>
+            <img src="download (7).jpg" width="200" height="200"  alt="Course 2">
+            <h3>Web Development</h3>
+            <p><a href="#">Description of course</a> </p>
+            <button>Enroll Now</button>
+          </li>
+        <li>
+          <img src="images (3).jpg" width="200" height="200" alt="Course 1">
+          <h3>Programming</h3>
+          <p><a href="#">Description of course</a> </p>
+          <button>Enroll Now</button>
+        </li>
+        <li>
+          <img src="images (4).jpg" width="200" height="200" alt="Course 3">
+          <h3>Cyber Security</h3>
+          <p><a href="#">Description of course</a> </p>
+          <button>Enroll Now</button>
+        </li>
+      </ul>
+    </main>
+    <footer>
+      <p>&copy; 2023 Online Education Platform</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+nav {
+  background-color:darkturquoise;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+nav a {
+  color:darkblue;
+  margin-left: 20px;
+  text-decoration: none;
+}
+body {
+  background-color:aliceblue;
+ }
+header {
+  color:indigo;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3rem;
+}
+
+header p {
+  font-size: 1.5rem;
+}
+
+main {
+  margin: 50px auto;
+  width: 80%;
+}
+
+h2 {
+  text-align: center;
+  color:mediumblue;
+}
+h3 {
+  text-align: center;
+  color:blueviolet;
+}
+
+.course-list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+}
+
+.course-list li {
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  flex-basis: 30%;
+  padding: 20px;
+  text-align: center;
+}
+
+.course-list li img {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.course-list li h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.course-list li p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.course-list li button {
+  background-color:bisque;
+  border: none;
+  color:black;
+}
+</style>
