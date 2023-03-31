@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Binary Search Algorithm</title>
+</head>
+<body>
+  <p>Search for the element "15" in the array:</p>
+  <p>[1, 5, 10, 15, 20, 25]</p>
+  <p>The index of the element is: <span id="result"></span></p>
+
+  <script>
+    const numbers = [1, 5, 10, 15, 20, 25];
+
+    function binarySearch(arr, target) {
+      let left = 0;
+      let right = arr.length - 1;
+
+      while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+
+        if (arr[mid] === target) {
+          return mid;
+        } else if (arr[mid] < target) {
+          left = mid + 1;
+        } else {
+          right = mid - 1;
+        }
+      }
+
+      return -1;
+    }
+
+    const target = 15;
+    const result = binarySearch(numbers, target);
+
+    const resultElement = document.getElementById("result");
+    resultElement.textContent = result;
+  </script>
+  <style>
+    body{
+        background-color: rgb(183, 246, 225);
+    }
+    p{
+        color:solid black;
+    }
+  </style>
+</body>
+</html>

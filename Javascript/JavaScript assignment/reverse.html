@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reverse Words in a String</title>
+</head>
+<body>
+  <h1>Reversing Words</h1>
+  <p>Original String: Welcome to Tecnotree</p>
+  <p>Reversed String: <span id="result"></span></p>
+
+  <script>
+    function reverseWords(str) {
+      const words = str.split(' ');
+      const reversedWords = words.reverse();
+      return reversedWords.join(' ');
+    }
+
+    const originalString = "Welcome to Tecnotree";
+    const reversedString = reverseWords(originalString);
+
+    const resultElement = document.getElementById("result");
+    resultElement.textContent = reversedString;
+  </script>
+  <style>
+    h1{
+      color:darkblue;
+    }
+    p{
+      color:crimson
+    }
+    body{
+      background-color:beige;
+    }
+  </style>
+</body>
+</html>

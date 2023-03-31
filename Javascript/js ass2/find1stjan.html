@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>My JavaScript Program</title>
+  </head>
+  <body>
+    <h1>To find 1st Jan is Sunday between 2014 and 2050</h1>
+    <script>
+        // Loop through the years between 2014 and 2050
+for (var year = 2014; year <= 2050; year++) {
+  // Create a new Date object for January 1st of the current year
+  var date = new Date(year, 0, 1);
+
+  // Check if January 1st is a Sunday
+  if (date.getDay() === 0) {
+    console.log("January 1st, " + year + " is a Sunday!");
+  }
+}
+</script>
+</body>
+</html>

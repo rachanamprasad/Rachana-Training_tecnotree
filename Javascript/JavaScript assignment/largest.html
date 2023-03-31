@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>First Largest Element in an Array</title>
+</head>
+<body>
+    <h1>Largest number</h1>
+  <p>The first largest element in the array is: <span id="result"></span></p>
+
+  <script>
+    const numbers = [10, 5, 25, 30, 15, 20];
+
+    function firstLargestElement(arr) {
+      // Sort the array in descending order
+      const sortedArray = arr.sort((a, b) => b - a);
+      
+      // Return the first largest element
+      return sortedArray[0];
+    }
+
+    const result = firstLargestElement(numbers);
+
+    const resultElement = document.getElementById("result");
+    resultElement.textContent = result;
+  </script>
+  <style>
+    body{
+        background-color: blanchedalmond;
+    }
+    h1{
+        color:brown;
+    }
+    p{
+        color:rgb(113, 7, 199);
+    }
+  </style>
+</body>
+</html>

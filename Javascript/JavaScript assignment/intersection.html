@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intersection of Two Arrays</title>
+    <style>
+      /* add some basic styles to make the output readable */
+      body {
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Intersection of Two Arrays</h1>
+   
+    <script>
+      // define the two arrays to find the intersection of
+      const array1 = [1, 2, 3, 4, 5];
+      const array2 = [4, 5, 6, 7, 8];
+
+      // define a function to find the intersection of two arrays
+      function intersection(array1, array2) {
+        const set1 = new Set(array1);
+        const set2 = new Set(array2);
+        return [...set1].filter((x) => set2.has(x));
+      }
+
+      // call the intersection function and output the result
+      const result = intersection(array1, array2);
+      document.write(`The intersection of [${array1}] and [${array2}] is [${result}]`);
+    </script>
+  </body>
+</html>

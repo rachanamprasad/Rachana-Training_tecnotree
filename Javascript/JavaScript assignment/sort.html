@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sort Array of Objects by Property</title>
+  <h1>Sorted Array by Age</h1>
+</head>
+<body>
+  <ul id="people">
+    <li>Ron, 25</li>
+    <li>Sam, 30</li>
+    <li>Jimmy, 20</li>
+    <li>Charlie, 25</li>
+  </ul>
+
+  <script>
+    const people = [
+      { name: "Ron", age: 25 },
+      { name: "Sam", age: 30 },
+      { name: "Jimmy", age: 20 },
+      { name: "Charlie", age: 25 }
+    ];
+
+    function sortByProperty(arr, prop) {
+      return arr.sort((a, b) => (a[prop] > b[prop]) ? 1 : -1);
+    }
+
+    const sortedPeople = sortByProperty(people, "age");
+
+    const peopleList = document.getElementById("people");
+
+    // Remove existing list items from the unordered list
+    while (peopleList.firstChild) {
+      peopleList.removeChild(peopleList.firstChild);
+    }
+
+    // Add sorted list items to the unordered list
+    sortedPeople.forEach(person => {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${person.name}, ${person.age}`;
+      peopleList.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>

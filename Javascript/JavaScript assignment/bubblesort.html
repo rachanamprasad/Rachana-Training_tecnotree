@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bubble Sort Algorithm</title>
+</head>
+<body>
+    <h1>Bubble Sort</h1>
+  <p>Unsorted Array: [34, 58, 61, 26, 3]</p>
+  <p>Sorted Array: <span id="result"></span></p>
+
+  <script>
+    function bubbleSort(arr) {
+      const len = arr.length;
+      for (let i = 0; i < len - 1; i++) {
+        for (let j = 0; j < len - 1 - i; j++) {
+          if (arr[j] > arr[j+1]) {
+            const temp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = temp;
+          }
+        }
+      }
+      return arr;
+    }
+
+    const unsortedArray = [34, 58, 61, 26, 3];
+    const sortedArray = bubbleSort(unsortedArray);
+
+    const resultElement = document.getElementById("result");
+    resultElement.textContent = sortedArray;
+  </script>
+  <style>
+    h1{
+        color:midnightblue;
+    }
+    p{
+        color: indianred;
+    }
+  </style>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>My JavaScript Program</title>
+  </head>
+  <body>
+    <h1>To convert cel to fah</h1>
+    <script>
+// Get today's date
+var today = new Date();
+
+// Get the current year
+var currentYear = today.getFullYear();
+
+// Get Christmas day for the current year
+var christmas = new Date(currentYear, 11, 25);
+
+// Calculate the number of days until Christmas
+var daysLeft = Math.ceil((christmas.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+
+// Display the number of days left
+console.log("There are " + daysLeft + " days left until Christmas!");
+
+</script>
+</body>
+</html>

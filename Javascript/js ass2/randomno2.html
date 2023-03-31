@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>My JavaScript Program</title>
+  </head>
+  <body>
+    <h1>To guess a random number</h1>
+    <script>
+// Generate a random number between 1 and 10
+var randomNumber = Math.floor(Math.random() * 10) + 1;
+
+// Prompt the user to guess the number
+var guess = prompt("Guess a number between 1 and 10:");
+
+// Check if the guess matches the random number
+if (guess == randomNumber) {
+  alert("Good Work!");
+} else {
+  alert("Not matched. The number was " + randomNumber + ".");
+}
+
+</script>
+</body>
+</html>
