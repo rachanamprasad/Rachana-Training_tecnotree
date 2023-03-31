@@ -1,0 +1,25 @@
+1. create database HospitalManagement;
+
+2.use HospitalManagement;
+  create table employees (
+  id INT PRIMARY KEY,
+  name VARCHAR(255),
+  age INT
+  );
+
+3.  INSERT INTO employees (id, name, age)
+    VALUES (1, 'John Doe', 30);
+
+4. select * from employees;
+
+5. select name,age from employees;
+
+6. update employees
+    set id=35
+    where id=1;
+
+7. delete from employees where id=35;
+
+8. drop table employees;
+
+9.  drop database HospitalManagement;
