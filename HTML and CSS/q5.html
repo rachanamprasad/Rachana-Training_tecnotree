@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <h1>Weather App</h1>
+      <h2 id="location"></h2>
+      <h2 id="weather"></h2>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
+<style>
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: antiquewhite;
+  }
+  
+  #app {
+    margin: 50px auto;
+  }
+  
+  h1 {
+    margin-bottom: 10px;
+    color:blue;
+  }
+  
+  h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+</style>
+<script>
+// Function to get the weather data from OpenWeatherMap API
+async function getWeather(position) {
+  const apiKey = '52da993b14bf13d19d1facc25fd0bca6';
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    displayWeather(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Function to display the weather data
+function displayWeather(data) {
+  const location = document.getElementById('location');
+  const weather = document.getElementById('weather');
+  const description = data.weather[0].description;
+  const temperature = data.main.temp;
+  const city = data.name;
+  const country = data.sys.country;
+  
+  location.textContent = `${city}, ${country}`;
+  weather.textContent = `${description}, ${temperature}°C`;
+}
+
+// Function to handle errors
+function showError() {
+  const errorDiv = document.getElementById('error');
+  errorDiv.textContent = 'Unable to retrieve location. Please enable location services and try again.';
+  errorDiv.style.display = 'block';
+}
+
+// Get the user's location
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(getWeather, showError);
+} else {
+  showError();
+}
+
+
+</script>

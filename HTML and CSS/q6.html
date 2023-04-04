@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Todo List App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <h1>Todo List App</h1>
+      <form>
+        <input type="text" id="new-task" placeholder="Add a new task...">
+        <button type="submit" id="add-button">Add</button>
+      </form>
+      <ul id="task-list">
+      </ul>
+    </div>
+  </body>
+</html>
+<style>
+    body {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#app {
+  margin: 50px auto;
+  width: 400px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+button[type="submit"], button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+button[type="submit"]:hover, button:hover {
+  background-color: #0062cc;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+li.completed {
+  text-decoration: line-through;
+}
+
+li .task-text {
+  flex-grow: 1;
+}
+
+li button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+</style>

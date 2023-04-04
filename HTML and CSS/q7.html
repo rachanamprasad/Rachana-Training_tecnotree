@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="display">
+        <input type="text" id="input">
+      </div>
+      <div class="buttons">
+        <button onclick="add('+')">+</button>
+        <button onclick="add('-')">-</button>
+        <button onclick="add('*')">*</button>
+        <button onclick="add('/')">/</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="clearInput()">C</button>
+        <button onclick="add('7')">7</button>
+        <button onclick="add('8')">8</button>
+        <button onclick="add('9')">9</button>
+        <button onclick="add('4')">4</button>
+        <button onclick="add('5')">5</button>
+        <button onclick="add('6')">6</button>
+        <button onclick="add('1')">1</button>
+        <button onclick="add('2')">2</button>
+        <button onclick="add('3')">3</button>
+        <button onclick="add('0')">0</button>
+        <button onclick="add('.')">.</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+<style>
+body{
+    background-color:black;
+}
+    .calculator {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.display {
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  background-color: aliceblue;
+}
+
+button {
+  padding: 10px;
+  font-size: 20px;
+  background-color:rgb(196, 243, 150);
+}
+
+</style>
+<script>
+    let input = document.getElementById('input');
+
+function add(value) {
+  input.value += value;
+}
+
+function clearInput() {
+  input.value = '';
+}
+
+function calculate() {
+  try {
+    input.value = eval(input.value);
+  } catch (error) {
+    input.value = 'Error';
+  }
+}
+
+</script>

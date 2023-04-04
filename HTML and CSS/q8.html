@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Memory Game</h1>
+  <p>Click on the squares to reveal the hidden symbol.</p>
+  <div class="game-container">
+    <div class="game-grid">
+      <div class="game-square" data-index="0"></div>
+      <div class="game-square" data-index="1"></div>
+      <div class="game-square" data-index="2"></div>
+      <div class="game-square" data-index="3"></div>
+      <div class="game-square" data-index="4"></div>
+      <div class="game-square" data-index="5"></div>
+      <div class="game-square" data-index="6"></div>
+      <div class="game-square" data-index="7"></div>
+      <div class="game-square" data-index="8"></div>
+    </div>
+  </div>
+  <div class="game-board">
+    <div class="game-row">
+      <div class="game-square"></div>
+      <div class="game-square"></div>
+      <<div class="game-square"></div>
+      <div class="game-square"></div>
+    </div>
+    <div class="game-row">
+      <div class="game-square"></div>
+      <div class="game-square"></div>
+      <div class="game-square"></div>
+      <div class="game-square"></div>
+    </div>
+    <div class="game-row">
+      <div class="game-square"></div>
+      <div class="game-square"></div>
+      <div class="game-square"></div>
+      <div class="game-square"></div>
+    </div>
+    <div class="game-row">
+      <div class="game-square"></div>
+      <div class="game-square"></div>
+      <div class="game-square"></div>
+      <div class="game-square"></div>
+    </div>
+  </div>
+  <div id="score">Score: 0</div>
+  
+</body>
+</html>
+
+<style>
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  width: 300px;
+  height: 300px;
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 10px;
+}
+
+.game-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 72px;
+  color: #fff;
+  background-color: #000;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.game-square.revealed {
+  background-color: #fff;
+  color: #000;
+}
+
+</style>
+<script>
+const symbols = ["🍎", "🍊", "🍇", "🍓", "🍌", "🍉", "🍒", "🍍","🍌"];
+
+let selectedSquares = [];
+let matchedSquares = [];
+let score = 0;
+
+// Shuffle the symbols array
+function shuffle(array) {
+  let currentIndex = array.length;
+  let temporaryValue, randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
+// Add event listener to each square
+const squares = document.querySelectorAll(".game-square");
+squares.forEach((square) => {
+  square.addEventListener("click", () => {
+    // Ignore clicks on matched squares
+    if (matchedSquares.includes(square)) return;
+    // Reveal the symbol
+    const symbolIndex = square.dataset.index;
+    square.textContent = symbols[symbolIndex];
+    // Add the square to the selected squares array
+    selectedSquares.push(square);
+    // If two squares have been selected, check for a match
+    if (selectedSquares.length === 2) {
+      const [square1, square2] = selectedSquares;
+      const symbol1 = symbols[square1.dataset.index];
+      const symbol2 = symbols[square2.dataset.index];
+      if (symbol1 === symbol2) {
+        // Match found
+        matchedSquares.push(square1, square2);
+        selectedSquares = [];
+        score += 10;
+        document.getElementById("score").textContent = `Score: ${score}`;
+        // Check if all matches have been found
+        if (matchedSquares.length === squares.length) {
+          alert(`Congratulations, you won with a score of ${score}!`);
+        }
+      } else {
+        // No match found
+        setTimeout(() => {
+          square1.textContent = "";
+          square2.textContent = "";
+          selectedSquares = [];
+        }, 1000);
+        score -= 2;
+        document.getElementById("score").textContent = `Score: ${score}`;
+      }
+    }
+  });
+});
+
+// Shuffle the symbols and render the
+grid
+shuffle(symbols);
+squares.forEach((square, index) => {
+square.dataset.index = index % symbols.length;
+});
+
+// Display initial score
+document.getElementById("score").textContent = 'Score:${score}';
+</script>

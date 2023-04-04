@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search for a recipe...">
+    <button id="search-btn">Search</button>
+  </div>
+  <div id="recipe-list"></div>
+  <div id="saved-recipes"></div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
+<style>
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .search-container {
+    display: flex;
+    margin: 20px;
+  }
+  
+  #search-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  #search-btn {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #recipe-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .recipe-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    width: 250px;
+  }
+  
+  .recipe-card h3 {
+    margin-top: 0;
+  }
+  
+  .recipe-card img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .recipe-card button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #saved-recipes {
+    margin: 20px;
+  }
+  
+  .saved-recipe {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    width: 250px;
+  }
+  
+  .saved-recipe h3 {
+    margin-top: 0;
+  }
+</style>
+<script>
+recipeImage.alt = recipe.title;
+recipeCard.appendChild(recipeImage);
+const recipeTitle = document.createElement("h3");
+recipeTitle.innerText = recipe.title;
+recipeCard.appendChild(recipeTitle);
+const recipeButton = document.createElement("button");
+recipeButton.innerText = "Save Recipe";
+recipeButton.addEventListener("click", () => saveRecipe(recipe));
+recipeCard.appendChild(recipeButton);
+if (isSearchResult) {
+const recipeDetailsButton = document.createElement("button");
+recipeDetailsButton.innerText = "View Details";
+recipeDetailsButton.addEventListener("click", async () => {
+const recipeDetails = await getRecipeDetails(recipe.id);
+alert(recipeDetails.instructions);
+});
+recipeCard.appendChild(recipeDetailsButton);
+}
+return recipeCard;
+
+
+// Function to display search results
+function displaySearchResults(results) {
+recipeList.innerHTML = "";
+results.forEach(result => {
+const recipeCard = createRecipeCard(result, true);
+recipeList.appendChild(recipeCard);
+});
+}
+
+// Event listener for search button
+searchBtn.addEventListener("click", async () => {
+const searchQuery = searchInput.value;
+const results = await searchRecipes(searchQuery);
+displaySearchResults(results);
+});
+
+// On page load, retrieve and display any saved recipes
+window.addEventListener("load", async () => {
+savedRecipeIds = JSON.parse(localStorage.getItem("savedRecipeIds")) || [];
+for (let i = 0; i < savedRecipeIds.length; i++) {
+const recipeDetails = await getRecipeDetails(savedRecipeIds[i]);
+const savedRecipeCard = createRecipeCard(recipeDetails, false);
+savedRecipes.appendChild(savedRecipeCard);
+}
+});
+
+// Save the list of saved recipe IDs to local storage whenever the user adds or removes a recipe
+window.addEventListener("unload", () => {
+localStorage.setItem("savedRecipeIds", JSON.stringify(savedRecipeIds));
+});
+</script>
