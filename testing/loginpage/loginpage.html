@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+  </head>
+  <body>
+    <form>
+      <center><h2>Login Form</h2></center>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br><br>
+      <center><button id="login-btn" onclick="login()" disabled>Login</button></center>        
+    </form>
+    <br>
+    <a href="resetpassword.html">Forgot Password?</a>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+<style>
+ body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("https://marketplace.canva.com/EAFJebotzdY/1/0/1600w/canva-beige-floral-minimalist-linktree-background-Jr6vl3hxUDw.jpg");
+  background-size: cover;
+}
+
+h2{
+    color:darkblue;
+}
+form {
+  border: 3px solid #f1f1f1;
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  color:darkslateblue;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+#login-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#login-btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #1e0458;
+  text-decoration: none;
+  float: right;
+  font-size: 18px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #4CAF50;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+</style>
+<script>
+    var usernameInput = document.getElementById("username");
+    var passwordInput = document.getElementById("password");
+    var loginBtn = document.getElementById("login-btn");
+  
+    usernameInput.addEventListener("input", function() {
+      if (usernameInput.value.trim() !== "" && passwordInput.value.trim() !== "") {
+        loginBtn.disabled = false;
+      } else {
+        loginBtn.disabled = true;
+      }
+    });
+  
+    passwordInput.addEventListener("input", function() {
+      if (usernameInput.value.trim() !== "" && passwordInput.value.trim() !== "") {
+        loginBtn.disabled = false;
+      } else {
+        loginBtn.disabled = true;
+      }
+  
+      var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+      if (!passwordRegex.test(passwordInput.value)) {
+        passwordInput.setCustomValidity("Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, and one number.");
+      } else {
+        passwordInput.setCustomValidity("");
+      }
+    });
+  
+    function login() {
+      var username = usernameInput.value;
+      var password = passwordInput.value;
+  
+      var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+      if (!passwordRegex.test(password)) {
+        return false;
+      } else if (username == "" || password == "") {
+        return false;
+      } else {
+        alert("Login Successful!!")
+      }
+    }
+</script>
+
+  
+  
