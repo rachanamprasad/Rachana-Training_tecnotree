@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Close Bank Account</title>
+    <div class="container">
+      <h2>Close Bank Account</h2>
+      <form id="close-account-form">
+        <div class="form-control">
+          <label for="account-number">Account Number:</label>
+          <input type="text" id="account-number" name="account-number" required>
+        </div>
+        <div class="form-control">
+          <label for="reason">Reason for Closure:</label>
+          <textarea id="reason" name="reason" required></textarea>
+        </div>
+        <div class="form-control">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" id="close-account-btn">Close Account</button>
+      </form>
+      <p id="message"></p>
+    </div>
+<style>
+    body{
+        background-color:lightblue;
+    }
+    .container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.form-control {
+  margin: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input, textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#close-account-btn {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#close-account-btn:hover {
+  background-color: #3e8e41;
+}
+
+#error-message {
+  color: red;
+}
+
+</style>
+</head>
+
+<body>
+    <script>
+        const form = document.getElementById('close-account-form');
+const accountNumber = document.getElementById('account-number');
+const reason = document.getElementById('reason');
+const password = document.getElementById('password');
+const message = document.getElementById('message');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const confirmed = confirm("Are you sure you want to close your account?");
+  if (confirmed) {
+    if (password.value === "Rachana@23") {
+      const data = {
+        accountNumber: accountNumber.value,
+        reason: reason.value
+      };
+      console.log(data);
+      message.textContent = "Processing request...";
+      setTimeout(() => {
+        message.textContent = "Account successfully closed.";
+        accountNumber.value = '';
+        reason.value = '';
+        accountNumber.disabled = true;
+        reason.disabled = true;
+        password.disabled = true;
+        document.getElementById('close-account-btn').disabled = true;
+      }, 2000);
+    } else {
+      message.textContent = "Incorrect password.";
+    }
+  }
+});
+    </script>
+</body>
+
+</html>

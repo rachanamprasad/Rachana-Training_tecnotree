@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Banking System</title>
+  <div class="login-container">
+    <h1>Login to your account</h1>
+    <form id="login-form" onsubmit="return login()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+      
+    </form>
+    <div id="login-error" class="error"></div>
+  </div>
+
+<style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+  body{
+        background-image: url("https://img.freepik.com/premium-vector/banking-business-banner-finance-savings-bank-building-silhouette-city-background_48369-11853.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+
+.login-container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 100px auto;
+  max-width: 400px;
+  padding: 40px;
+  text-align: center;
+}
+
+.login-container h1 {
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+}
+
+button[type="submit"] {
+  background-color: #428bca;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #3071a9;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+<script>
+    function login() {
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  if (username === "Rachanaprasad" && password === "Rachana@23") {
+    window.location.href = "dashboard.html"; // Redirect to dashboard page
+    return false;
+  } else {
+    var loginError = document.getElementById("login-error");
+    loginError.innerHTML = "Invalid username or password. Please try again.";
+    return false;
+  }
+}
+
+</script>
+</body>
+</html>
